@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>樱花动漫-樱花动漫在线观看_新番动画合集_番剧追番入口</title>
+<meta name="description" content="樱花动漫首页聚合新番动画、经典番剧与追番入口，按季度与类型整理可看内容，提供清晰的播放导航与追番收藏路径，方便快速找到想看的动画。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Ccircle cx='24' cy='24' r='22' fill='%23f7c8d4'/%3E%3Cg fill='%23e26a8d'%3E%3Cellipse cx='24' cy='15' rx='5' ry='8'/%3E%3Cellipse cx='24' cy='33' rx='5' ry='8'/%3E%3Cellipse cx='15' cy='24' rx='8' ry='5'/%3E%3Cellipse cx='33' cy='24' rx='8' ry='5'/%3E%3C/g%3E%3Ccircle cx='24' cy='24' r='4' fill='%23fff3d6'/%3E%3C/svg%3E">
+<style>
+:root{
+  --pink:#e26a8d;
+  --pink-soft:#f7c8d4;
+  --pink-pale:#fdf0f4;
+  --ink:#2c2730;
+  --ink-soft:#6a6270;
+  --line:#f0dbe3;
+  --cream:#fffaf6;
+  --green:#7aa87a;
+  --radius:16px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+  color:var(--ink);
+  background:var(--cream);
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--pink);text-decoration:none;}
+a:hover{text-decoration:underline;}
+img,svg{max-width:100%;}
+.wrap{width:min(1120px,92vw);margin:0 auto;}
+
+/* 页头 */
+header.site{
+  position:sticky;top:0;z-index:20;
+  background:rgba(255,250,246,.94);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.nav{display:flex;align-items:center;gap:24px;padding:12px 0;flex-wrap:wrap;}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px;letter-spacing:.5px;color:var(--ink);white-space:nowrap;}
+.logo:hover{text-decoration:none;}
+.logo svg{width:34px;height:34px;flex:none;}
+.nav ul{display:flex;gap:20px;list-style:none;margin:0;padding:0;flex-wrap:wrap;}
+.nav ul a{color:var(--ink-soft);font-size:15px;font-weight:500;}
+.nav ul a:hover{color:var(--pink);text-decoration:none;}
+.nav .cta{margin-left:auto;background:var(--pink);color:#fff;padding:8px 18px;border-radius:999px;font-size:14px;font-weight:600;}
+.nav .cta:hover{text-decoration:none;background:#cf5478;}
+
+/* 首屏 */
+.hero{
+  position:relative;overflow:hidden;
+  background:linear-gradient(160deg,var(--pink-pale) 0%,#fff6f9 55%,var(--cream) 100%);
+  border-bottom:1px solid var(--line);
+}
+.hero-inner{display:grid;grid-template-columns:1.15fr .85fr;gap:36px;align-items:center;padding:56px 0 52px;}
+.hero h1{font-size:clamp(30px,4.4vw,46px);line-height:1.25;margin:0 0 14px;font-weight:800;letter-spacing:1px;}
+.hero p.lead{font-size:16px;color:var(--ink-soft);margin:0 0 24px;max-width:36em;}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 24px;border-radius:999px;font-size:15px;font-weight:600;transition:.2s;}
+.btn-main{background:var(--pink);color:#fff;}
+.btn-main:hover{background:#cf5478;text-decoration:none;}
+.btn-ghost{border:1.5px solid var(--pink);color:var(--pink);background:transparent;}
+.btn-ghost:hover{background:var(--pink-pale);text-decoration:none;}
+.btn[aria-disabled="true"]{opacity:.72;cursor:not-allowed;}
+.hero-art{display:flex;justify-content:center;}
+.hero-art svg{width:100%;max-width:340px;height:auto;filter:drop-shadow(0 12px 24px rgba(226,106,141,.18));}
+.hero-stats{display:flex;gap:28px;margin-top:26px;flex-wrap:wrap;}
+.hero-stats div{font-size:13px;color:var(--ink-soft);}
+.hero-stats strong{display:block;font-size:22px;color:var(--pink);font-weight:800;line-height:1.2;}
+
+/* 通用区块 */
+section{padding:56px 0;}
+section.alt{background:#fff;}
+.sec-head{margin-bottom:28px;}
+.sec-head h2{font-size:clamp(21px,2.6vw,27px);margin:0 0 8px;font-weight:800;letter-spacing:.5px;}
+.sec-head p{margin:0;color:var(--ink-soft);font-size:15px;max-width:44em;}
+.tag-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;}
+.tag{font-size:13px;padding:5px 14px;border-radius:999px;background:var(--pink-pale);color:var(--pink);border:1px solid var(--line);}
+
+/* 卡片 */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.card{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  padding:22px;display:flex;flex-direction:column;gap:10px;
+  transition:.22s;
+}
+.card:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(226,106,141,.14);}
+.card .ico{width:42px;height:42px;border-radius:12px;background:var(--pink-pale);display:flex;align-items:center;justify-content:center;}
+.card .ico svg{width:22px;height:22px;}
+.card h3{margin:0;font-size:17px;font-weight:700;}
+.card p{margin:0;font-size:14.5px;color:var(--ink-soft);}
+.card .more{font-size:13.5px;font-weight:600;margin-top:auto;}
+
+/* 季度列表 */
+.season-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
+.season{
+  display:flex;gap:16px;align-items:flex-start;
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px;
+}
+.season .badge{
+  flex:none;width:52px;height:52px;border-radius:14px;
+  background:linear-gradient(150deg,var(--pink-soft),#fde7ee);
+  display:flex;align-items:center;justify-content:center;
+  font-weight:800;color:var(--pink);font-size:15px;
+}
+.season h3{margin:0 0 4px;font-size:16px;}
+.season p{margin:0;font-size:14px;color:var(--ink-soft);}
+
+/* 观看说明 */
+.guide{display:grid;grid-template-columns:1.1fr .9fr;gap:34px;align-items:start;}
+.guide ol{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:14px;}
+.guide ol li{font-size:15px;color:var(--ink-soft);}
+.guide ol li strong{color:var(--ink);}
+.panel{background:var(--pink-pale);border:1px solid var(--line);border-radius:var(--radius);padding:24px;}
+.panel h3{margin:0 0 10px;font-size:16px;}
+.panel p{margin:0 0 12px;font-size:14.5px;color:var(--ink-soft);}
+.panel p:last-child{margin-bottom:0;}
+
+/* 追番入口 */
+.entry-box{
+  background:linear-gradient(140deg,#fff5f8,#fdeef3);
+  border:1px solid var(--line);border-radius:22px;padding:36px 32px;
+  display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;
+}
+.entry-box h2{margin:0 0 8px;font-size:22px;}
+.entry-box p{margin:0;color:var(--ink-soft);font-size:15px;max-width:38em;}
+.entry-btns{display:flex;gap:12px;flex-wrap:wrap;}
+
+/* 页尾 */
+footer.site{
+  border-top:1px solid var(--line);background:#fff;padding:34px 0 30px;
+  font-size:13.5px;color:var(--ink-soft);
+}
+.foot-top{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:18px;}
+.foot-links{display:flex;gap:18px;flex-wrap:wrap;}
+.foot-links a{color:var(--ink-soft);}
+.foot-links a:hover{color:var(--pink);}
+.foot-note{border-top:1px dashed var(--line);padding-top:16px;font-size:12.5px;line-height:1.8;}
+
+@media (max-width:900px){
+  .hero-inner{grid-template-columns:1fr;padding:38px 0 36px;}
+  .hero-art{order:-1;justify-content:flex-start;}
+  .hero-art svg{max-width:220px;}
+  .cards{grid-template-columns:1fr 1fr;}
+  .season-grid{grid-template-columns:1fr;}
+  .guide{grid-template-columns:1fr;}
+  .entry-box{grid-template-columns:1fr;padding:26px 22px;}
+}
+@media (max-width:600px){
+  .nav{gap:12px;padding:10px 0;}
+  .nav ul{gap:14px;font-size:14px;}
+  .nav .cta{margin-left:0;}
+  .hero-stats{gap:18px;}
+  .cards{grid-template-columns:1fr;}
+  section{padding:40px 0;}
+  .hero h1{letter-spacing:.5px;}
+}
+</style>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap nav">
+    <a class="logo" href="#top" aria-label="樱花动漫首页">
+      <svg viewBox="0 0 48 48" aria-hidden="true">
+        <circle cx="24" cy="24" r="22" fill="#f7c8d4"/>
+        <g fill="#e26a8d">
+          <ellipse cx="24" cy="15" rx="5" ry="8"/>
+          <ellipse cx="24" cy="33" rx="5" ry="8"/>
+          <ellipse cx="15" cy="24" rx="8" ry="5"/>
+          <ellipse cx="33" cy="24" rx="8" ry="5"/>
+        </g>
+        <circle cx="24" cy="24" r="4" fill="#fff3d6"/>
+      </svg>
+      樱花动漫
+    </a>
+    <ul>
+      <li><a href="#new">新番速览</a></li>
+      <li><a href="#season">季度片单</a></li>
+      <li><a href="#howto">观看路径</a></li>
+      <li><a href="#entry">追番收藏</a></li>
+    </ul>
+    <a class="cta" href="#entry">开始追番</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- 首屏 -->
+  <section class="hero" id="top">
+    <div class="wrap hero-inner">
+      <div>
+        <h1>樱花动漫</h1>
+        <p class="lead">一个围绕动画内容组织的首页：把当季新番、往年经典与追番入口放在同一页面，按季度、类型和观看状态分层，方便你先想清楚看什么，再决定从哪一集开始。樱花动漫的栏目不追求堆量，而是让每一条都能对应到具体的观看需求。</p>
+        <div class="hero-actions">
+          <a class="btn btn-main" href="#new">浏览新番速览</a>
+          <a class="btn btn-ghost" href="#season">查看季度片单</a>
+        </div>
+        <div class="hero-stats">
+          <div><strong>4</strong>个季度片单分区</div>
+          <div><strong>6</strong>类常见题材标签</div>
+          <div><strong>3</strong>步完成追番收藏</div>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 320 300" xmlns="http://www.w3.org/2000/svg" role="img">
+          <defs>
+            <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#fde5ec"/>
+              <stop offset="100%" stop-color="#fff9f5"/>
+            </linearGradient>
+          </defs>
+          <rect x="10" y="14" width="300" height="200" rx="20" fill="url(#sky)" stroke="#f0dbe3"/>
+          <rect x="30" y="34" width="260" height="120" rx="10" fill="#fff" stroke="#f0dbe3"/>
+          <path d="M120 118 L152 66 L184 118 Z" fill="#f7c8d4"/>
+          <circle cx="196" cy="64" r="11" fill="#ffe1a8"/>
+          <rect x="30" y="168" width="150" height="10" rx="5" fill="#f7c8d4"/>
+          <rect x="30" y="186" width="96" height="10" rx="5" fill="#f0dbe3"/>
+          <circle cx="252" cy="182" r="20" fill="#e26a8d" opacity=".2"/>
+          <path d="M252 168 l4 9 10 1 -7 7 2 10 -9-5 -9 5 2-10 -7-7 10-1z" fill="#e26a8d"/>
+          <g fill="#e26a8d" opacity=".85">
+            <ellipse cx="70" cy="250" rx="9" ry="14"/>
+            <ellipse cx="70" cy="282" rx="9" ry="14"/>
+            <ellipse cx="54" cy="266" rx="14" ry="9"/>
+            <ellipse cx="86" cy="266" rx="14" ry="9"/>
+          </g>
+          <circle cx="70" cy="266" r="6" fill="#fff3d6"/>
+          <g fill="#f7c8d4">
+            <ellipse cx="180" cy="252" rx="6" ry="10"/>
+            <ellipse cx="180" cy="274" rx="6" ry="10"/>
+            <ellipse cx="169" cy="263" rx="10" ry="6"/>
+            <ellipse cx="191" cy="263" rx="10" ry="6"/>
+          </g>
+          <g fill="#f0dbe3">
+            <ellipse cx="250" cy="254" rx="5" ry="8"/>
+            <ellipse cx="250" cy="272" rx="5" ry="8"/>
+            <ellipse cx="241" cy="263" rx="8" ry="5"/>
+            <ellipse cx="259" cy="263" rx="8" ry="5"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 新番速览 -->
+  <section class="alt" id="new">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>新番速览：先看题材，再挑片</h2>
+        <p>新番数量多，按题材分组比逐个翻列表更省时间。樱花动漫把当季内容归到几类常见题材下，你可以从自己熟悉的类型切入，再决定要不要追。</p>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <div class="ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#e26a8d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.4 5.2 5.6.8-4 4 1 5.6L12 16l-5 2.6 1-5.6-4-4 5.6-.8z"/></svg>
+          </div>
+          <h3>热血与冒险</h3>
+          <p>以成长线和战斗节奏为主，适合想连续看多集的观众。挑选时重点看连载状态与单集时长，避免追到一半断档。</p>
+          <a class="more" href="#season">去季度片单 →</a>
+        </article>
+        <article class="card">
+          <div class="ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#e26a8d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.5-7-9a4 4 0 017-2.6A4 4 0 0119 11c0 4.5-7 9-7 9z"/></svg>
+          </div>
+          <h3>日常与治愈</h3>
+          <p>单集独立性强，适合碎片时间观看。这类作品对连续性要求低，从任意一集进入都不太影响理解。</p>
+          <a class="more" href="#season">去季度片单 →</a>
+        </article>
+        <article class="card">
+          <div class="ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#e26a8d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg>
+          </div>
+          <h3>悬疑与剧情</h3>
+          <p>信息密度高，前后集关联紧。建议先确认已更新集数，再按顺序观看，以免被剧透影响体验。</p>
+          <a class="more" href="#season">去季度片单 →</a>
+        </article>
+      </div>
+      <div class="tag-row">
+        <span class="tag">校园</span>
+        <span class="tag">科幻</span>
+        <span class="tag">奇幻</span>
+        <span class="tag">运动</span>
+        <span class="tag">恋爱</span>
+        <span class="tag">搞笑</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 季度片单 -->
+  <section id="season">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>季度片单：按时间线归档</h2>
+        <p>动画通常按季度更新，把片单按季度归档后，回看旧作或补番会更清楚。每个季度分区只回答一个问题：这一季有哪些内容值得先看。</p>
+      </div>
+      <div class="season-grid">
+        <div class="season">
+          <div class="badge">冬</div>
+          <div>
+            <h3>冬季档</h3>
+            <p>跨年播出，常出现长篇连载的延续。适合跟进上一季未完结的作品，注意确认集数是否衔接。</p>
+          </div>
+        </div>
+        <div class="season">
+          <div class="badge">春</div>
+          <div>
+            <h3>春季档</h3>
+            <p>新作集中上线，题材覆盖最广。樱花动漫在此分区优先展示原创与改编两类，便于对比选择。</p>
+          </div>
+        </div>
+        <div class="season">
+          <div class="badge">夏</div>
+          <div>
+            <h3>夏季档</h3>
+            <p>篇幅偏短的企划较多，适合假期集中观看。挑选时可参考单季总集数，安排观看节奏。</p>
+          </div>
+        </div>
+        <div class="season">
+          <div class="badge">秋</div>
+          <div>
+            <h3>秋季档</h3>
+            <p>年度收官季，续作与完结篇较多。补番时建议先看前作，再进入当季内容。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 观看路径 -->
+  <section class="alt" id="howto">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>观看路径：从找到片到看下去</h2>
+        <p>找动画的难点往往不在播放，而在决定看什么。把动作拆成几步，能减少反复跳转。</p>
+      </div>
+      <div class="guide">
+        <ol>
+          <li><strong>先定题材。</strong>从新番速览的题材分组进入，缩小到两三类，避免在长列表里来回滑动。</li>
+          <li><strong>再看季度。</strong>用季度片单确认作品的上线时间与连载状态，判断是补番还是追更。</li>
+          <li><strong>最后收藏。</strong>确定要看的作品后加入追番列表，之后从追番入口直接回到进度，不必重新搜索。</li>
+        </ol>
+        <div class="panel">
+          <h3>关于内容说明</h3>
+          <p>本页展示的是动画内容组织方式与观看路径，页面中的题材、季度与步骤均为站点栏目结构，不构成对具体作品版权或播放可用性的承诺。</p>
+          <p>樱花动漫的栏目会随季度调整，片单以实际更新为准；遇到链接失效或内容变更，以页面当期展示为参考。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 追番入口 -->
+  <section id="entry">
+    <div class="wrap">
+      <div class="entry-box">
+        <div>
+          <h2>追番收藏：把想看的放一起</h2>
+          <p>追番列表解决的是“下次从哪继续”的问题。把正在看、准备看和想补的作品分开，每次打开樱花动漫都能直接定位到进度，而不是从首页重新找起。</p>
+        </div>
+        <div class="entry-btns">
+          <a class="btn btn-main" href="#new">去看新番</a>
+          <a class="btn btn-ghost" href="#" data-download-placeholder="true" aria-disabled="true" tabindex="-1" style="pointer-events:none">下载</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <strong style="color:var(--ink);font-size:15px;">樱花动漫</strong><br>
+        动画内容组织与追番入口
+      </div>
+      <div class="foot-links">
+        <a href="#new">新番速览</a>
+        <a href="#season">季度片单</a>
+        <a href="#howto">观看路径</a>
+        <a href="#entry">追番收藏</a>
+        <a href="#top">回到顶部</a>
+      </div>
+    </div>
+    <div class="foot-note">
+      本站为樱花动漫主题首页，栏目围绕动画题材、季度归档与追番路径展开，页面内容用于说明观看组织方式。作品信息以实际更新为准，页面不保证第三方内容的可用性与完整性。
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
