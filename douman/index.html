@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>抖漫-抖漫短剧漫画在线看_抖漫热门作品与每日更新</title>
+<meta name="description" content="抖漫是一个以短剧式竖屏漫画为主的内容平台，这里可以了解抖漫的作品类型、更新节奏、热门榜单和阅读方式，找到适合自己口味的抖漫内容。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231b1030'/%3E%3Cpath d='M20 16h10v32H20z' fill='%23ff5c8a'/%3E%3Cpath d='M34 16h10v32H34z' fill='%23ffd166'/%3E%3Ccircle cx='47' cy='20' r='5' fill='%234dd0e1'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --bg:#120d1e;
+    --bg-soft:#1b1330;
+    --card:#221839;
+    --line:rgba(255,255,255,.09);
+    --text:#f4f0ff;
+    --muted:#b3a8cd;
+    --pink:#ff5c8a;
+    --gold:#ffd166;
+    --cyan:#4dd0e1;
+    --radius:16px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:
+      radial-gradient(900px 500px at 85% -10%, rgba(255,92,138,.18), transparent 60%),
+      radial-gradient(700px 420px at 0% 12%, rgba(77,208,225,.12), transparent 60%),
+      var(--bg);
+    color:var(--text);
+    font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,sans-serif;
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none}
+  img,svg{display:block;max-width:100%}
+  .wrap{width:100%;max-width:1120px;margin:0 auto;padding:0 20px}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:12px 26px;border-radius:999px;font-size:15px;font-weight:600;
+    border:1px solid transparent;transition:.2s;cursor:pointer;
+  }
+  .btn-main{background:linear-gradient(120deg,var(--pink),#ff8a5c);color:#1a0f22;box-shadow:0 8px 26px rgba(255,92,138,.35)}
+  .btn-main:hover{transform:translateY(-2px)}
+  .btn-ghost{border-color:var(--line);color:var(--text);background:rgba(255,255,255,.04)}
+  .btn-ghost:hover{border-color:var(--pink);color:#fff}
+  .btn[aria-disabled="true"]{opacity:.55;pointer-events:none}
+
+  /* header */
+  header.site{
+    position:sticky;top:0;z-index:50;
+    background:rgba(18,13,30,.82);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:68px}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px;letter-spacing:.5px}
+  .logo .mark{
+    width:34px;height:34px;border-radius:10px;flex:none;
+    background:linear-gradient(140deg,var(--pink),#8b5cf6 55%,var(--cyan));
+    display:grid;place-items:center;
+  }
+  .logo .mark svg{width:20px;height:20px}
+  nav.links{display:flex;align-items:center;gap:26px;font-size:15px;color:var(--muted)}
+  nav.links a{transition:.2s}
+  nav.links a:hover{color:var(--pink)}
+  .nav-cta{display:flex;align-items:center;gap:14px}
+  .nav-cta .btn{padding:9px 18px;font-size:14px}
+
+  /* hero */
+  .hero{padding:64px 0 48px;display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:center}
+  .kicker{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:13px;color:var(--gold);letter-spacing:2px;
+    border:1px solid rgba(255,209,102,.3);border-radius:999px;padding:5px 14px;
+    background:rgba(255,209,102,.07);
+  }
+  h1{
+    font-size:clamp(38px,6vw,60px);
+    line-height:1.15;letter-spacing:2px;font-weight:900;
+    margin:18px 0 6px;
+    background:linear-gradient(100deg,#fff 20%,var(--pink) 60%,var(--gold));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero-sub{color:var(--muted);font-size:16px;max-width:520px;margin-top:14px}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:28px}
+  .hero-stats{display:flex;gap:34px;margin-top:36px;flex-wrap:wrap}
+  .hero-stats .num{font-size:24px;font-weight:800;color:var(--gold);line-height:1.2}
+  .hero-stats .lab{font-size:13px;color:var(--muted)}
+
+  /* phone / illustration */
+  .stage{position:relative;display:flex;justify-content:center}
+  .phone{
+    width:250px;height:440px;border-radius:30px;
+    background:linear-gradient(180deg,#2a1b47,#1a1130);
+    border:1px solid rgba(255,255,255,.14);
+    box-shadow:0 30px 70px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.1);
+    padding:14px;position:relative;overflow:hidden;
+  }
+  .phone .notch{width:70px;height:6px;border-radius:99px;background:rgba(255,255,255,.18);margin:0 auto 12px}
+  .panel{
+    height:calc(100% - 20px);border-radius:18px;overflow:hidden;
+    background:linear-gradient(160deg,rgba(255,92,138,.28),rgba(77,208,225,.14));
+    padding:14px;display:flex;flex-direction:column;gap:10px;
+  }
+  .panel .bar{height:10px;border-radius:99px;background:rgba(255,255,255,.28);width:70%}
+  .panel .bar.s{width:45%;opacity:.6}
+  .frame{flex:1;border-radius:12px;background:rgba(0,0,0,.3);position:relative;overflow:hidden;display:grid;place-items:center}
+  .frame svg{width:100%;height:100%}
+  .chip{position:absolute;font-size:12px;padding:4px 10px;border-radius:99px;background:rgba(18,13,30,.85);border:1px solid var(--line)}
+  .chip.a{top:16px;left:-8px;color:var(--cyan)}
+  .chip.b{bottom:34px;right:-10px;color:var(--gold)}
+  .chip.c{bottom:-8px;left:26px;color:var(--pink)}
+
+  /* sections */
+  section{padding:54px 0}
+  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:28px}
+  .sec-head h2{font-size:clamp(22px,3vw,28px);font-weight:800;letter-spacing:1px}
+  .sec-head h2 span{color:var(--pink)}
+  .sec-head p{color:var(--muted);font-size:14px;max-width:520px}
+  .divider{height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent)}
+
+  /* genres */
+  .genres{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .genre{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:20px 18px;transition:.25s;
+  }
+  .genre:hover{transform:translateY(-4px);border-color:rgba(255,92,138,.5);background:#291d45}
+  .genre .ico{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;margin-bottom:12px;background:rgba(255,92,138,.14)}
+  .genre .ico svg{width:20px;height:20px}
+  .genre h3{font-size:16px;margin-bottom:6px}
+  .genre p{font-size:13px;color:var(--muted);line-height:1.65}
+
+  /* ranking */
+  .rank-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .rank-item{
+    display:flex;gap:16px;align-items:flex-start;
+    background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;
+  }
+  .rank-item .no{
+    font-size:22px;font-weight:900;line-height:1;flex:none;width:34px;
+    background:linear-gradient(140deg,var(--gold),var(--pink));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .rank-item h3{font-size:15px;margin-bottom:4px}
+  .rank-item p{font-size:13px;color:var(--muted);line-height:1.6}
+  .tag{display:inline-block;font-size:11px;padding:1px 8px;border-radius:99px;border:1px solid var(--line);color:var(--muted);margin-right:6px}
+
+  /* flow */
+  .flow{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;counter-reset:step}
+  .step{
+    position:relative;background:linear-gradient(180deg,rgba(255,255,255,.05),transparent);
+    border:1px solid var(--line);border-radius:var(--radius);padding:26px 22px;
+  }
+  .step::before{
+    counter-increment:step;content:"0" counter(step);
+    font-size:13px;letter-spacing:2px;color:var(--cyan);font-weight:700;
+  }
+  .step h3{font-size:17px;margin:8px 0 8px}
+  .step p{font-size:14px;color:var(--muted)}
+
+  /* about */
+  .about{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+  .about h2{font-size:clamp(22px,3vw,28px);margin-bottom:18px;letter-spacing:1px}
+  .about p{color:var(--muted);font-size:15px;margin-bottom:14px}
+  .about p strong{color:var(--text);font-weight:600}
+  .facts{display:grid;gap:12px}
+  .fact{display:flex;gap:14px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+  .fact svg{width:18px;height:18px;flex:none;margin-top:4px}
+  .fact h3{font-size:14px;margin-bottom:2px}
+  .fact p{font-size:13px;color:var(--muted);margin:0}
+
+  /* cta band */
+  .band{
+    border-radius:24px;padding:44px 36px;
+    background:
+      radial-gradient(500px 240px at 90% 0%, rgba(255,92,138,.35), transparent 70%),
+      linear-gradient(120deg,#2a1a45,#1a1130);
+    border:1px solid rgba(255,92,138,.25);
+    display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap;
+  }
+  .band h2{font-size:clamp(20px,3vw,26px);margin-bottom:8px}
+  .band p{color:var(--muted);font-size:14px;max-width:520px}
+
+  /* faq */
+  .faq{display:grid;gap:12px}
+  details{
+    background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 20px;
+  }
+  details[open]{border-color:rgba(255,92,138,.4)}
+  summary{cursor:pointer;font-size:15px;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:12px;align-items:center}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";color:var(--pink);font-size:20px;line-height:1;transition:.2s}
+  details[open] summary::after{transform:rotate(45deg)}
+  details p{color:var(--muted);font-size:14px;margin-top:12px}
+
+  /* footer */
+  footer.site{border-top:1px solid var(--line);padding:40px 0 34px;margin-top:20px;background:rgba(0,0,0,.18)}
+  .foot{display:flex;justify-content:space-between;gap:28px;flex-wrap:wrap;align-items:flex-start}
+  .foot .brand{max-width:340px}
+  .foot .brand p{color:var(--muted);font-size:13px;margin-top:10px}
+  .foot nav{display:flex;gap:40px;flex-wrap:wrap}
+  .foot nav div{display:grid;gap:8px;font-size:13px;color:var(--muted)}
+  .foot nav div b{color:var(--text);font-weight:600;font-size:14px;margin-bottom:2px}
+  .foot nav a:hover{color:var(--pink)}
+  .copy{text-align:center;color:var(--muted);font-size:12px;margin-top:32px;padding-top:20px;border-top:1px solid var(--line)}
+
+  @media (max-width:960px){
+    .hero{grid-template-columns:1fr;padding-top:44px}
+    .stage{order:-1;margin-bottom:6px}
+    .phone{width:210px;height:360px}
+    .genres{grid-template-columns:repeat(2,1fr)}
+    .rank-grid{grid-template-columns:1fr}
+    .flow{grid-template-columns:1fr}
+    .about{grid-template-columns:1fr;gap:26px}
+    nav.links{display:none}
+    .nav-cta .btn-ghost{display:none}
+  }
+  @media (max-width:520px){
+    .wrap{padding:0 16px}
+    .hero-stats{gap:22px}
+    .genres{grid-template-columns:1fr}
+    .band{padding:30px 22px}
+    .hero-actions .btn{width:100%;justify-content:center}
+  }
+</style>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap nav">
+    <a class="logo" href="#top" aria-label="抖漫首页">
+      <span class="mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M5 4h4v16H5z" fill="#1a0f22"/><path d="M13 4h4v16h-4z" fill="#1a0f22"/><circle cx="19" cy="7" r="2.4" fill="#1a0f22"/></svg>
+      </span>
+      抖漫
+    </a>
+    <nav class="links" aria-label="主导航">
+      <a href="#genres">内容类型</a>
+      <a href="#ranking">热门榜</a>
+      <a href="#flow">怎么看</a>
+      <a href="#about">关于抖漫</a>
+      <a href="#faq">常见问题</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-ghost" href="#flow">阅读方式</a>
+      <a class="btn btn-main" href="#ranking">看热门</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <div class="wrap hero">
+    <div>
+      <span class="kicker">竖屏短剧漫画 · 每日更新</span>
+      <h1>抖漫</h1>
+      <p class="hero-sub">抖漫以竖屏滑动阅读为主，把短剧的节奏感带进漫画页面。每一话篇幅紧凑，剧情推进快，适合在通勤、午休或睡前用手机连贯看完一段故事。</p>
+      <div class="hero-actions">
+        <a class="btn btn-main" href="#ranking">进入热门榜</a>
+        <a class="btn btn-ghost" href="#genres">按类型浏览</a>
+      </div>
+      <div class="hero-stats">
+        <div><div class="num">4</div><div class="lab">主要题材方向</div></div>
+        <div><div class="num">竖屏</div><div class="lab">滑动阅读形态</div></div>
+        <div><div class="num">日更</div><div class="lab">常规更新节奏</div></div>
+      </div>
+    </div>
+
+    <div class="stage" aria-hidden="true">
+      <div class="phone">
+        <div class="notch"></div>
+        <div class="panel">
+          <div class="bar"></div>
+          <div class="bar s"></div>
+          <div class="frame">
+            <svg viewBox="0 0 200 240" preserveAspectRatio="xMidYMid slice">
+              <defs>
+                <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#ff5c8a"/><stop offset="1" stop-color="#8b5cf6"/>
+                </linearGradient>
+              </defs>
+              <rect width="200" height="240" fill="#1a1130"/>
+              <circle cx="100" cy="96" r="44" fill="url(#g1)" opacity=".9"/>
+              <path d="M56 240c0-40 20-64 44-64s44 24 44 64z" fill="#4dd0e1" opacity=".55"/>
+              <rect x="24" y="26" width="70" height="8" rx="4" fill="#fff" opacity=".35"/>
+              <rect x="24" y="42" width="46" height="8" rx="4" fill="#fff" opacity=".2"/>
+              <path d="M150 30l6 12 13 2-9 9 2 13-12-6-12 6 2-13-9-9 13-2z" fill="#ffd166" opacity=".9"/>
+            </svg>
+          </div>
+          <div class="bar s"></div>
+        </div>
+        <span class="chip a">竖屏分镜</span>
+        <span class="chip b">一话三分钟</span>
+        <span class="chip c">每日更新</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap"><div class="divider"></div></div>
+
+  <!-- GENRES -->
+  <section id="genres">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <h2>抖漫的<span>内容方向</span></h2>
+          <p>抖漫的作品按情绪和节奏分类，而不是按传统漫画的卷册划分。选类型，等于先选一种阅读心情。</p>
+        </div>
+      </div>
+      <div class="genres">
+        <article class="genre">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#ff5c8a" stroke-width="2"><path d="M12 21s-7-4.4-7-9.5A4.5 4.5 0 0 1 12 8a4.5 4.5 0 0 1 7 3.5C19 16.6 12 21 12 21z"/></svg></div>
+          <h3>都市情感</h3>
+          <p>职场、合租、旧友重逢等日常场景，冲突集中在几格之内，适合碎片时间追更。</p>
+        </article>
+        <article class="genre">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#ffd166" stroke-width="2"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></div>
+          <h3>热血成长</h3>
+          <p>主角从低谷翻身的短篇结构，节奏偏快，每话结尾多留一个反转钩子。</p>
+        </article>
+        <article class="genre">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#4dd0e1" stroke-width="2"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg></div>
+          <h3>悬疑反转</h3>
+          <p>以信息差推动剧情，画面多用暗色分镜，适合一口气连看数话。</p>
+        </article>
+        <article class="genre">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2"><path d="M4 18V7l8-4 8 4v11l-8 4z"/><path d="M4 7l8 4 8-4M12 11v11"/></svg></div>
+          <h3>奇幻设定</h3>
+          <p>架空世界观与能力设定，靠短篇单元推进，适合喜欢新鲜设定的读者。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- RANKING -->
+  <section id="ranking">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <h2>抖漫<span>热门榜</span>的看点</h2>
+          <p>榜单按阅读热度和更新活跃度排列，进入前列的作品通常同时具备稳定更新和清晰的开篇钩子。</p>
+        </div>
+        <a class="btn btn-ghost" href="#flow">了解更新规则</a>
+      </div>
+      <div class="rank-grid">
+        <article class="rank-item">
+          <div class="no">01</div>
+          <div>
+            <h3>都市情感类</h3>
+            <p><span class="tag">稳定更新</span><span class="tag">强钩子</span>开篇两话完成人物关系和矛盾交代，后续以短单元推进，回看门槛低。</p>
+          </div>
+        </article>
+        <article class="rank-item">
+          <div class="no">02</div>
+          <div>
+            <h3>热血成长类</h3>
+            <p><span class="tag">节奏快</span><span class="tag">反转多</span>每话结尾留有悬念，适合连续滑动阅读，单次阅读时长偏短。</p>
+          </div>
+        </article>
+        <article class="rank-item">
+          <div class="no">03</div>
+          <div>
+            <h3>悬疑反转型</h3>
+            <p><span class="tag">信息差</span><span class="tag">暗色分镜</span>重视线索铺陈，读者常会回头重看前几话确认细节。</p>
+          </div>
+        </article>
+        <article class="rank-item">
+          <div class="no">04</div>
+          <div>
+            <h3>奇幻设定类</h3>
+            <p><span class="tag">世界观</span><span class="tag">单元结构</span>设定交代集中在前段，之后以独立小故事延展，适合跳读。</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FLOW -->
+  <section id="flow">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <h2>在抖漫<span>怎么看</span></h2>
+          <p>抖漫的阅读路径围绕手机竖屏设计，从选类型到追更，三步就能形成自己的阅读习惯。</p>
+        </div>
+      </div>
+      <div class="flow">
+        <article class="step">
+          <h3>先选类型</h3>
+          <p>按当下想要的情绪挑选题材，比盲目翻榜单更快找到能读下去的作品。</p>
+        </article>
+        <article class="step">
+          <h3>竖屏滑动</h3>
+          <p>页面按竖屏分镜排布，上下滑动即翻页，单手操作即可完成整话阅读。</p>
+        </article>
+        <article class="step">
+          <h3>收藏追更</h3>
+          <p>把在看的作品加入收藏，按更新节奏回访，避免错过新话。</p>
+        </article>
+      </div>
+      <div style="margin-top:28px;display:flex;gap:14px;flex-wrap:wrap">
+        <a class="btn btn-main" href="#genres">按类型开始阅读</a>
+        <a class="btn btn-ghost" href="#top">回到抖漫首页顶部</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap about">
+      <div>
+        <h2>关于抖漫</h2>
+        <p>抖漫的关注点在于<strong>短、快、竖屏</strong>。它把传统漫画的大开页拆成连续下滑的分镜流，让一话的阅读时间压缩到几分钟，适合移动场景下的碎片阅读。</p>
+        <p>在内容组织上，抖漫把作品按题材与情绪归类，而不是按作者或卷册堆叠。读者可以先确定想要的体验，再进入具体作品，减少挑选成本。</p>
+        <p>更新方面，抖漫以日更为常规节奏，热门作品会保持更密集的更新。读者通过收藏与榜单回访，能较稳定地跟上进度。</p>
+      </div>
+      <div class="facts">
+        <div class="fact">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#ffd166" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
+          <div><h3>阅读形态</h3><p>竖屏分镜、滑动翻页，以手机为主要阅读设备。</p></div>
+        </div>
+        <div class="fact">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#ff5c8a" stroke-width="2"><path d="M12 3v18M3 12h18"/></svg>
+          <div><h3>单话时长</h3><p>篇幅紧凑，一话通常可在数分钟内读完。</p></div>
+        </div>
+        <div class="fact">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#4dd0e1" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          <div><h3>更新节奏</h3><p>常规日更，热门作品更新更密集。</p></div>
+        </div>
+        <div class="fact">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2"><path d="M4 6h16v12H4z"/><path d="M8 10h8M8 14h5"/></svg>
+          <div><h3>内容归类</h3><p>以题材与情绪分类，便于按心情选读。</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="band">
+        <div>
+          <h2>把抖漫加入你的每日阅读清单</h2>
+          <p>先挑一个题材，再决定是否追更。抖漫的短篇结构让试读成本很低，读一话就能判断合不合口味。</p>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn btn-main" href="#ranking">浏览热门榜</a>
+          <a class="btn btn-ghost" href="#faq">查看常见问题</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <h2>抖漫<span>常见问题</span></h2>
+          <p>关于阅读方式、更新与分类的几个基础问题，帮助新读者快速上手。</p>
+        </div>
+      </div>
+      <div class="faq">
+        <details open>
+          <summary>抖漫适合什么设备阅读？</summary>
+          <p>抖漫以竖屏分镜排布，主要为手机阅读设计。上下滑动即可推进剧情，单手操作也能完成整话阅读。</p>
+        </details>
+        <details>
+          <summary>抖漫的更新频率是怎样的？</summary>
+          <p>常规节奏为日更，热门作品会保持更密集的更新。想稳定追更，可以把作品加入收藏后按更新回访。</p>
+        </details>
+        <details>
+          <summary>一话大概需要读多久？</summary>
+          <p>抖漫单话篇幅紧凑，通常几分钟内可以读完，适合通勤、午休或睡前这类碎片时间。</p>
+        </details>
+        <details>
+          <summary>怎么挑到适合自己的抖漫作品？</summary>
+          <p>先按题材确定阅读心情，再参考热门榜的开篇钩子和更新活跃度。短篇结构下，试读一话即可判断是否继续。</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="foot">
+      <div class="brand">
+        <a class="logo" href="#top">
+          <span class="mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M5 4h4v16H5z" fill="#1a0f22"/><path d="M13 4h4v16h-4z" fill="#1a0f22"/><circle cx="19" cy="7" r="2.4" fill="#1a0f22"/></svg>
+          </span>
+          抖漫
+        </a>
+        <p>抖漫——竖屏短剧漫画阅读平台，以紧凑篇幅与日更节奏，服务移动端的碎片阅读需求。</p>
+      </div>
+      <nav aria-label="页尾导航">
+        <div>
+          <b>浏览</b>
+          <a href="#genres">内容类型</a>
+          <a href="#ranking">热门榜</a>
+          <a href="#flow">怎么看</a>
+        </div>
+        <div>
+          <b>了解</b>
+          <a href="#about">关于抖漫</a>
+          <a href="#faq">常见问题</a>
+          <a href="#top">回到顶部</a>
+        </div>
+        <div>
+          <b>下载</b>
+          <a class="btn btn-ghost" href="#" data-download-placeholder="true" aria-disabled="true" tabindex="-1" style="padding:8px 16px;font-size:13px">下载</a>
+        </div>
+      </nav>
+    </div>
+    <div class="copy">© 2024 抖漫 · 本页为抖漫主题首页，内容以短剧式竖屏漫画阅读为核心。</div>
+  </div>
+</footer>
+
+</body>
+                                  </html>
